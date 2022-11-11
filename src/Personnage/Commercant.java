@@ -1,5 +1,4 @@
 package Personnage;
-import Personnage.Humain;
 
 public class Commercant extends Humain{
 	
@@ -8,13 +7,14 @@ public class Commercant extends Humain{
 	}
 	
 	public void recevoir(int argent) {
+		gagnerArgent(argent);
 		parler(argent + " sous ! Je te remercie généreux donateur !");
-		argent = getArgent() + argent;
 	}
 	
 	public int seFaireExtorquer() {
 		parler(" J’ai tout perdu! Le monde est trop injuste... ");
-		return 0;
+		perdreArgent(getArgent());
+		return getArgent();
 	}
 	
 	
