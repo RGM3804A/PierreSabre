@@ -22,6 +22,12 @@ public class Yakuza extends Humain {
 		parler("J'ai piqué le(s) " + somme + " de " + victime.getNom() + " ce qui me fait " + getArgent() + " dans ma poche. Hi ! Hi !");
 	}
 	
+	@Override
+	public void direBonjour() {
+		direBonjour();
+		parler("Mon clan est celui de " + clan);
+	}
+	
 	public int perdre() {
 		reputation -= 1;
 		int butin = getArgent();
