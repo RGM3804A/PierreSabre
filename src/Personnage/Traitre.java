@@ -1,5 +1,7 @@
 package Personnage;
 
+import java.util.Random;
+
 public class Traitre extends Samourai{
 	private int traitrise;
 
@@ -10,13 +12,24 @@ public class Traitre extends Samourai{
 	
 	@Override
 	public void direBonjour() {
-		direBonjour();
+		super.direBonjour();
 		parler("Mais je suis un traître et mon niveau de traîtrise est : " + traitrise + ". Chut !");
 	}
 	
 	public void faireLeGentil() {
-		if (nbConnaissances < 1) {
+		if (getNbConnaissances() < 1) {
 			parler("Je ne peux faire ami ami avec personne car je ne connais personne ! Snif");
+		}else {
+			Random random = new Random();
+			int i = random.nextInt(0, getNbConnaissances()-1);
+			Humain ami = getMemoire()[i];
+			int don = getArgent()*1/20;
+			parler("Il faut absolument remonter ma cote de confiance. Je vais faire ami ami avec " + ami.getNom());
+			parler("Bonjour l'ami ! "+ "Je voudrai vous aider en donnant " + don);
+			perdreArgent(don);
+			ami.gagnerArgent(don);
+			ami.parler("Merci" + getNom() + ". Vous êtes quelqu'un de bien.");
+			traitrise--;
 		}
 	}
 	

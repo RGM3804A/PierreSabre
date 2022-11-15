@@ -3,8 +3,8 @@ package Personnage;
 public class Ronin extends Humain {
 	int honneur = 1;
 
-	public Ronin(String nom, String BoissonPreferee, int argent) {
-		super(nom, BoissonPreferee, argent);
+	public Ronin(String nom, String boissonPreferee, int argent) {
+		super(nom, boissonPreferee, argent);
 	}
 	
 	public void donner(Commercant beneficiaire) {
@@ -23,12 +23,13 @@ public class Ronin extends Humain {
 			parler("Je t’ai eu petit yakusa!");
 			int gain = adversaire.perdre();
 			gagnerArgent(gain);
-			
+			honneur++;
 		} else {
 			parler("J'ai perdu contre ce yakuza, mon honneur et ma bourse ont en pris un coup.");
 			int perte = getArgent();
 			perdreArgent(perte);
 			adversaire.gagner(perte);
+			honneur--;
 		}
 	}
 }
